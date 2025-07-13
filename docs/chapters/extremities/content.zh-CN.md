@@ -1,5 +1,5 @@
 # Finding extremities: root finding
-
+现在我们了解（表面上而已吧）分量函数，就可以
 Now that we understand (well, superficially anyway) the component functions, we can find the extremities of our Bézier curve by finding maxima and minima on the component functions, by solving the equation B'(t) = 0. We've already seen that the derivative of a Bézier curve is a simpler Bézier curve, but how do we solve the equality? Fairly easily, actually, until our derivatives are 4th order or higher... then things get really hard. But let's start simple:
 
 ### Quadratic curves: linear derivatives.
