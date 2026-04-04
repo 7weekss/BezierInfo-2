@@ -264,10 +264,10 @@ function getCubicRoots(pa, pb, pc, pd) {
 那么，既然我们现在知道如何求根，就可以算出贝塞尔曲线的一阶导数和二阶导数的根，然后再将这些根叠加显示在之前的图像上。对于二次曲线，这说明我们只需要考虑一阶导数（红）：
 
 
-<graphics-element title="二次贝塞尔曲线的极值Quadratic Bézier curve extremities" width="825" src="./extremities.js" data-type="quadratic"></graphics-element>
+<graphics-element title="二次贝塞尔曲线的极值" width="825" src="./extremities.js" data-type="quadratic"></graphics-element>
 
 
 对于三次曲线，这说明一阶导数（红）和二阶导数（紫）：
 
 
-<graphics-element title="三次贝塞尔曲线的极值Cubic Bézier curve extremities" width="825" src="./extremities.js" data-type="cubic"></graphics-element>
+<graphics-element title="三次贝塞尔曲线的极值" width="825" src="./extremities.js" data-type="cubic"></graphics-element>
