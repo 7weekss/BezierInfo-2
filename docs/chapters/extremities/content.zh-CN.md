@@ -1,11 +1,11 @@
 # 求极值: 求根
-现在我们（至少初步地）理解了分量函数，可以通过求解方程 B'(t) = 0，找到分量函数的最大和最小值，从而确定贝塞尔曲线的极值点。我们已经看到贝塞尔曲线的导数是一个更简易的贝塞尔曲线，但是这个等式该如何解呢？挺简单的，其实，直到我们导数的阶数高于三...那时候就会变得很难。但让我们先从简单的开始吧：
+现在我们（至少初步地）理解了分量函数，可以通过求解方程 B'(t) = 0，找到分量函数的最大值和最小值，从而确定贝塞尔曲线的极值点。我们已经看到贝塞尔曲线的导数是一个更简易的贝塞尔曲线，但是这个等式该如何解呢？挺简单的，其实，但党导数的阶数超过三阶时，问题就会变得很难。但让我们先从简单的开始吧：
 
 
 ### 二次曲线: 线性导数.
 
 
-二次贝塞尔曲线的导数是一条线性贝塞尔曲线，在两项之间插值。这就是说找到 “这条线在哪里等于0” 只需将其改写为 `t` 的函数，再求解。首先用[导数](#derivatives)章节所提及的规则把我们的二次贝塞尔变成一个线性贝塞尔函数：
+二次贝塞尔曲线的导数是一条线性贝塞尔曲线，由两个控制点之间的插值得到。这就是说找到 “这条线在哪里等于0” 只需将其改写为 `t` 的函数，再求解。首先用第13节，[导数](#derivatives)章节所提及的规则把我们的二次贝塞尔变成一个线性贝塞尔函数：
 
 
 \[
@@ -29,14 +29,14 @@
 \]
 
 
-完成.
+求解完成.
 
 
 [特例](https://en.wikipedia.org/wiki/Caveat_emptor#Caveat_lector)：如果 `b-a` 等于0，无解，也不应尝试除法。
 
 
 ### 三次曲线: 二次方程.
-三次贝塞尔曲线的导数是一个二次贝塞尔曲线，所以为了求一个二次函数的根，可以用[二次方程](https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B)。若你已经知道，你或许会想起。若没有学过，二次方程像这样：
+三次贝塞尔曲线的导数是一个二次贝塞尔曲线，所以为了求一个二次函数的根，可以用[二次方程](https://en.wikipedia.org/wiki/Quadratic_formula)。如果你已经学过，或许会想起。若没有学过，二次方程是这样的：
 
 
 \[
@@ -44,7 +44,7 @@
 \]
 
 
-所以，如果可以把贝塞尔分量函数改写为普通的多项式方程，这就基本上完成了：只需把实数值代入二次方程，检查根号值是否为负值（若是，没有根）再计算出两个数值（因为有加减符号，有两个答案）。任何在0和1之间的数值是一个对贝塞尔曲线重要的根，其它的不相关（因为贝塞尔曲线只在区间[0,1]上定义）。那么，该如何转换呢？
+所以，如果可以把贝塞尔分量函数改写为普通的多项式方程，这就基本上完成了：只需把实数值代入二次方程，检查判别式是否为负值（若是，没有实根）再计算出两个数值（因为有加减符号，有两个答案）。任何在0和1之间的数值是一个对贝塞尔曲线重要的根，其它的不相关（因为贝塞尔曲线只在区间[0,1]上定义）。那么，该如何转换呢？
 
 
 首先，用[导数](#derivatives)章节所提及的规则把我们的三次贝塞尔变成一个二次贝塞尔：
@@ -52,8 +52,8 @@
 
 \[
 \begin{array}{l}
-  B(t)~\textit{使用 uses}~\{ p_1,p_2,p_3,p_4 \} \\
-  B'(t)~\textit{使用 uses}~\{ v_1,v_2,v_3 \},~\textit{其中 where}~v_1 = 3(p_2-p_1),~v_2 = 3(p_3-p_2),~v_3 = 3(p_4-p_3)
+  B(t)~\textit{使用}~\{ p_1,p_2,p_3,p_4 \} \\
+  B'(t)~\textit{使用}~\{ v_1,v_2,v_3 \},~\textit{其中}~v_1 = 3(p_2-p_1),~v_2 = 3(p_3-p_2),~v_3 = 3(p_4-p_3)
 \end{array}
 \]
 
@@ -73,7 +73,6 @@
 
 
 这就会给我们三个用 `v` 来定义的系数 {a, b, c}。`v`的值是我们原坐标值的表达式，所以我们可以通过代换得到：
-This gives us three coefficients {a, b, c} that are expressed in terms of `v` values, where the `v` values are expressions of our original coordinate values, so we can do some substitution to get:
 
 
 \[
@@ -86,22 +85,18 @@ This gives us three coefficients {a, b, c} that are expressed in terms of `v` va
 
 
 小事一桩。这样就可以把这些数值插入二次方程，非常简单的找到根。
-Easy-peasy. We can now almost trivially find the roots by plugging those values into the quadratic formula.
 
 
-因为是一个三次曲线，二次导数是有意义的。可以通过计算出一次导数的导数来找到它。
-And as a cubic curve, there is also a meaningful second derivative, which we can compute by simply taking the derivative of the derivative.
+因为是一个三次曲线，二次导数是有定义的。可以通过计算出一次导数的导数来找到它。
 
 
 ### 四次曲线: 卡尔达诺公式
 
 
-我们目前还没深入了解，但下一步会是一个四次贝塞尔曲线。和预期的一样，导数是一个三次函数，事情会变的更复杂。三次函数，和四次函数一样，没有一个”简单”的公式来求根，而是需要经过多次变形，改写成某种形式之后，才能开始尝试求解。
-We haven't really looked at them before now, but the next step up would be a Quartic curve, a fourth degree Bézier curve. As expected, these have a derivative that is a cubic function, and now things get much harder. Cubic functions don't have a "simple" rule to find their roots, like the quadratic formula, and instead require quite a bit of rewriting to a form that we can even start to try to solve.
+我们目前还没深入了解，但下一步会是一个四次贝塞尔曲线。和预期的一样，导数是一个三次函数，事情会变的更复杂。三次函数不像二次函数那样有一个“简单”的公式来求根，而是需要经过多次变形，改写成某种形式之后，才能开始尝试求解。
 
 
-在16世纪，
-Back in the 16<sup>th</sup> century, before Bézier curves were a thing, and even before _calculus itself_ was a thing, [Gerolamo Cardano](https://en.wikipedia.org/wiki/Gerolamo_Cardano) figured out that even if the general cubic function is really hard to solve, it can be rewritten to a form for which finding the roots is "easier" (even if not "easy"):
+在16世纪，在贝塞尔曲线和微积分存在之前，[吉罗拉莫·卡尔达诺](https://en.wikipedia.org/wiki/Gerolamo_Cardano)发现，就算一个三次函数很难解答，它可以被改写到一个为求根，“更简单”的方式 （就算没有那么“简单”）：
 
 
 \[
@@ -112,39 +107,39 @@ Back in the 16<sup>th</sup> century, before Bézier curves were a thing, and eve
 \]
 
 
-We can see that the easier formula only has two constants, rather than four, and only two expressions involving `t`, rather than three: this makes things considerably easier to solve because it lets us use [regular calculus](https://www.wolframalpha.com/input/?i=t^3+%2B+pt+%2B+q) to find the values that satisfy the equation.
+我们能看到这一个更简单的公式只有两个常数，而不是四个，和只有两个包含`t`的公式，而不是三个：这让它的解法变得相当的更简单，因为我们可以用[微积分](https://www.wolframalpha.com/input/?i=t^3+%2B+pt+%2B+q)求出满足方程的解。
 
 
-Now, there is one small hitch: as a cubic function, the solutions may be [complex numbers](https://en.wikipedia.org/wiki/Complex_number) rather than plain numbers... And Cardano realised this, centuries before complex numbers were a well-understood and established part of number theory. His interpretation of them was "these numbers are impossible but that's okay because they disappear again in later steps", allowing him to not think about them too much, but we have it even easier: as we're trying to find the roots for display purposes, we don't even _care_ about complex numbers: we're going to simplify Cardano's approach just that tiny bit further by throwing away any solution that's not a plain number.
+但，有一个小意外障碍：因为是三次函数，解答有可能会是[复数](https://en.wikipedia.org/wiki/Complex_number)，而不是实数...卡尔达诺意识到了这一点，在复数尚未成为数论中充分了解和确立的理论。他对这些数解释是“这些数字无法存在，但没关系，因为它们会在之后的步骤消失”。这让他无需考虑这一个问题，但我们的方法更简单：因为我们要找的根是为了在屏幕上显示，都_不需要管_有没有复数：我们把卡尔达诺的方法稍微简化一下，直接忽略复数解。
 
 
-So, how do we rewrite the hard formula into the easier formula? This is explained in detail over at [Ken J. Ward's page](https://trans4mind.com/personal_development/mathematics/polynomials/cubicAlgebra.htm) for solving the cubic equation, so instead of showing the maths, I'm simply going to show the programming code for solving the cubic equation, with the complex roots getting totally ignored, but if you're interested you should definitely head over to Ken's page and give the procedure a read-through.
+那么，该如何把这一个复杂的公式改写成一个更简单的呢？这在[Ken J. Ward 的网页](https://trans4mind.com/personal_development/mathematics/polynomials/cubicAlgebra.htm)上有对三次方程求解的详细解释。所以，与其展示数学原理，我直接展示解答三次方程的程序代码，完全不理复数根，但如果感兴趣，可以到Ken的网站更深入了解步骤。
 
 
 <div class="howtocode">
 
 
-### Implementing Cardano's algorithm for finding all real roots
+### 实现卡尔达诺算法求所有实根
 
 
-The "real roots" part is fairly important, because while you cannot take a square, cube, etc. root of a negative number in the "real" number space (denoted with ℝ), this is perfectly fine in the ["complex" number](https://en.wikipedia.org/wiki/Complex_number) space (denoted with ℂ). And, as it so happens, Cardano is also attributed as the first mathematician in history to have made use of complex numbers in his calculations. For this very algorithm!
+“实根”的部分挺重要，因为虽然无法在实数集（ℝ）内算出一个负数的平方，这在[复数](https://en.wikipedia.org/wiki/Complex_number)集（ℂ）内是完全合理的。此外，巧合的是，卡尔达诺也被认为是历史中第一位在计算中用复数的数学家，正是为了这个算法！
 
 
 ```
-// A helper function to filter for values in the [0,1] interval:
+// 一个过滤在 [0,1] 之间的数值的辅助函数：
 function accept(t) {
   return 0<=t && t <=1;
 }
 
 
-// A real-cuberoots-only function:
+// 一个只用实数立方根的函数： 
 function cuberoot(v) {
   if(v<0) return -pow(-v,1/3);
   return pow(v,1/3);
 }
 
 
-// Now then: given cubic coordinates {pa, pb, pc, pd} find all roots.
+// 那么： 那么：已知三次贝塞尔曲线的控制点 {pa, pb, pc, pd} 求其所有根。
 function getCubicRoots(pa, pb, pc, pd) {
   var   a = (3*pa - 6*pb + 3*pc),
         b = (-3*pa + 3*pb),
@@ -152,26 +147,25 @@ function getCubicRoots(pa, pb, pc, pd) {
         d = (-pa + 3*pb - 3*pc + pd);
 
 
-  // do a check to see whether we even need cubic solving:
+  // 检查是否需要求一个三次平方的解： 
   if (approximately(d,0)) {
-    // 这不是一个三次曲线。 this is not a cubic curve.
+    // 这不是一个三次曲线。
     if (approximately(a,0)) {
-      // 也不是一个四次曲线。 in fact, this is not a quadratic curve either.
+      // 这也不是一个二次曲线。 
       if (approximately(b,0)) {
-        // 其实，根本没有根。in fact in fact, there are no solutions.
+        // 其实，根本没有根。
         return [];
       }
-      // 线性解 linear solution
+      // 线性解
       return [-c / b].filter(accept);
     }
-    // 二次解 quadratic solution
+    // 二次解
     var q = sqrt(b*b - 4*a*c), 2a = 2*a;
     return [(q-b)/2a, (-b-q)/2a].filter(accept)
   }
 
 
-  // at this point, we know we need a cubic solution.
-
+  // 到这一步，我们需要一个三次方程的解。 
 
   a /= d;
   b /= d;
@@ -185,11 +179,11 @@ function getCubicRoots(pa, pb, pc, pd) {
       discriminant = q2*q2 + p3*p3*p3;
 
 
-  // and some variables we're going to use later on:
+  // 一会儿会用到的一些变量： 
   var u1, v1, root1, root2, root3;
 
 
-  // three possible real roots:
+  // 三个可能的实根： 
   if (discriminant < 0) {
     var mp3  = -p/3,
     mp33 = mp3*mp3*mp3,
@@ -206,7 +200,7 @@ function getCubicRoots(pa, pb, pc, pd) {
   }
 
 
-  // three real roots, but two of them are equal:
+  //  三个实根，但两个是相等的：
   if(discriminant === 0) {
     u1 = q2 < 0 ? cuberoot(-q2) : -cuberoot(q2);
     root1 = 2*u1 - a/3;
@@ -215,7 +209,7 @@ function getCubicRoots(pa, pb, pc, pd) {
   }
 
 
-  // one real root, two complex roots
+  // 一个实根，两个复数
   var sd = sqrt(discriminant);
   u1 = cuberoot(sd - q2);
   v1 = cuberoot(sd + q2);
@@ -228,27 +222,30 @@ function getCubicRoots(pa, pb, pc, pd) {
 </div>
 
 
+就是这样；虽然数学计算复杂，但代码很简单：“尊重数学原理，同时尽可能多的缓存值，以避免重复计算”。现在我们有找到三次函数所有根的方法，可以继续用来找曲线的极值。
 And that's it. The maths is complicated, but the code is pretty much just "follow the maths, while caching as many values as we can to prevent recomputing things as much as possible" and now we have a way to find all roots for a cubic function and can just move on with using that to find extremities of our curves.
 
 
+当然，由于四次曲线也有意义的二阶和三阶的导数，可以很容易地通过（导数的）导数的导数来计算他们，像三次曲线一样。
 And of course, as a quartic curve  also has meaningful second and third derivatives, we can quite easily compute those by using the derivative of the derivative (of the derivative), just as for cubic curves.
 
 
 
 
-### Quintic and higher order curves: finding numerical solutions
+### 五次及更高阶曲线：寻找数值解
 
 
-And this is where thing stop, because we _cannot_ find the roots for polynomials of degree 5 or higher using algebra (a fact known as [the Abel–Ruffini theorem](https://en.wikipedia.org/wiki/Abel%E2%80%93Ruffini_theorem)). Instead, for occasions like these, where algebra simply cannot yield an answer, we turn to [numerical analysis](https://en.wikipedia.org/wiki/Numerical_analysis).
+而事情到此为止，因为我们无法用代数方法求出五次或更高次多项式的跟（称为[阿贝尔-鲁菲尼定理](https://en.wikipedia.org/wiki/Abel%E2%80%93Ruffini_theorem)）。
+因此，对于这类代数方法无法解答的情况，我们借助[数值分析](https://en.wikipedia.org/wiki/Numerical_analysis)。
 
 
-That's a fancy term for saying "rather than trying to find exact answers by manipulating symbols, find approximate answers by describing the underlying process as a combination of steps, each of which _can_ be assigned a number via symbolic manipulation". For example, trying to mathematically compute how much water fits in a completely crazy three dimensional shape is very hard, even if it got you the perfect, precise answer. A much easier approach, which would be less perfect but still entirely useful, would be to just grab a buck and start filling the shape until it was full: just count the number of buckets of water you used. And if we want a more precise answer, we can use smaller buckets.
+这也只是一个“花哨”的方式来说“与其寻找精确的答案，不如通过描述背后的过程为一系列步骤的组合找接近的答案，其中每一个都可以通过符号运算赋予一个数值“。比如，想用数学来计算一个三维形状能够容纳多少水很难，就算找出了最完美，精确的答案。一个更简单的方法，虽然没那么完美但还是很有用，是直接拿一个水桶，然后直接往里面加水，加到满为止:在数一下用了几桶水。如果想要一个精确的答案，我们可以用小一点的水桶。
 
 
-So that's what we're going to do here, too: we're going to treat the problem as a sequence of steps, and the smaller we can make each step, the closer we'll get to that "perfect, precise" answer. And as it turns out, there is a really nice numerical root-finding algorithm, called the [Newton-Raphson](https://en.wikipedia.org/wiki/Newton-Raphson) root finding method (yes, after *[that](https://en.wikipedia.org/wiki/Isaac_Newton)* Newton), which we can make use of. The Newton-Raphson approach consists of taking our impossible-to-solve function `f(x)`, picking some initial value `x` (literally any value will do), and calculating `f(x)`. We can think of that value as the "height" of the function at `x`. If that height is zero, we're done, we have found a root. If it isn't, we calculate the tangent line at `f(x)` and calculate at which `x` value _its_ height is zero (which we've already seen is very easy). That will give us a new `x` and we repeat the process until we find a root.
+我们在这里也可以用这个方法：我们将问题视为一系列步骤，步骤越小，就会离那一个“完美，精确”的答案越近。后来发现，还真有一个我们可以用的求根算法，叫做[牛顿-拉弗森](https://en.wikipedia.org/wiki/Newton-Raphson)求根法（对，以*[那个](https://en.wikipedia.org/wiki/Isaac_Newton)* 牛顿命名）。牛顿-拉弗森方法包括：用我们无法求解的函数`f(x)`，选一个初始值`x` （任何数值都可以），再算出`f(x)`。我们可以把这个数值当作函数在`x`的“高度”。如果那个高度等于零，任务完成，已经找到根了。如果不是，就计算出在`f(x)`的切线，然后算出它的高度在那个`x`值等于零（我们看到过，很容易）。这会给我们一个新的`x`，继续重复这个过程，到找到一个根为止。
 
 
-Mathematically, this means that for some `x`, at step `n=1`, we perform the following calculation until `f<sub>y</sub>(x)` is zero, so that the next `t` is the same as the one we already have:
+在数学上，这意味着对于某个`x`，在第`n=1`步时，我们进行以下的计算，直到`f<sub>y</sub>(x)`等于零，以便下一个`t`跟我们已经有的相同：
 
 
 \[
@@ -256,30 +253,24 @@ Mathematically, this means that for some `x`, at step `n=1`, we perform the foll
 \]
 
 
-(The Wikipedia article has a decent animation for this process, so I will not add a graphic for that here)
+（这个维基百科的文章里有解释这个过程的好动画，所以我在这里就不加图像了）
 
 
-Now, this works well only if we can pick good starting points, and our curve is [continuously differentiable](https://en.wikipedia.org/wiki/Continuous_function) and doesn't have [oscillations](https://en.wikipedia.org/wiki/Oscillation_(mathematics)). Glossing over the exact meaning of those terms, the curves we're dealing with conform to those constraints, so as long as we pick good starting points, this will work. So the question is: which starting points do we pick?
+但这只有在我们能选出合适的起点，并且曲线是[连续可微](https://en.wikipedia.org/wiki/Continuous_function)也没有[振荡]
+(https://en.wikipedia.org/wiki/Oscillation_(mathematics))。暂且忽略术语的具体含义，我们所处理的曲线赋予这些限制条件，所以只要选择合适的起点，这种方法就能奏效。现在问题在于：我们应该选择哪些起始点？
 
 
-As it turns out, Newton-Raphson is so blindingly fast that we could get away with just not picking: we simply run the algorithm from *t=0* to *t=1* at small steps (say, 1/200<sup>th</sup>) and the result will be all the roots we want. Of course, this may pose problems for high order Bézier curves: 200 steps for a 200<sup>th</sup> order Bézier curve is going to go wrong, but that's okay: there is no reason (at least, none that I know of) to _ever_ use Bézier curves of crazy high orders. You might use a fifth order curve to get the "nicest still remotely workable" approximation of a full circle with a single Bézier curve, but that's pretty much as high as you'll ever need to go.
+事实证明，牛顿-拉夫逊算法速度非常快，以至于我们可以不进行选择：只需要微小步长（例如，1/200<sup>th</sup>）从*t=0*到*t=1*运行该算法，结果就是所有寻求的根。当然，这对高阶贝塞尔曲线造成问题：对于200阶贝塞尔曲线的200步肯定会出问题，但这没关系：没有_任何_理由（至少据我所知）去使用高阶贝塞尔曲线。或许会使用五阶曲线来获得用单个贝塞尔曲线“最漂亮且勉强能用”的园近似，但这基本上就是所需要的最高阶了。
 
 
 ### 总结:
-
-
-So now that we know how to do root finding, we can determine the first and second derivative roots for our Bézier curves, and show those roots overlaid on the previous graphics. For the quadratic curve, that means just the first derivative, in red:
+那么，既然我们现在知道如何求根，就可以算出贝塞尔曲线的一阶导数和二阶导数的根，然后再将这些根叠加显示在之前的图像上。对于二次曲线，这说明我们只需要考虑一阶导数（红）：
 
 
 <graphics-element title="二次贝塞尔曲线的极值Quadratic Bézier curve extremities" width="825" src="./extremities.js" data-type="quadratic"></graphics-element>
 
 
-
-
-And for cubic curves, that means first and second derivatives, in red and purple respectively:
+对于三次曲线，这说明一阶导数（红）和二阶导数（紫）：
 
 
 <graphics-element title="三次贝塞尔曲线的极值Cubic Bézier curve extremities" width="825" src="./extremities.js" data-type="cubic"></graphics-element>
-
-
-
