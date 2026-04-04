@@ -223,12 +223,9 @@ function getCubicRoots(pa, pb, pc, pd) {
 
 
 就是这样；虽然数学计算复杂，但代码很简单：“尊重数学原理，同时尽可能多的缓存值，以避免重复计算”。现在我们有找到三次函数所有根的方法，可以继续用来找曲线的极值。
-And that's it. The maths is complicated, but the code is pretty much just "follow the maths, while caching as many values as we can to prevent recomputing things as much as possible" and now we have a way to find all roots for a cubic function and can just move on with using that to find extremities of our curves.
 
 
 当然，由于四次曲线也有意义的二阶和三阶的导数，可以很容易地通过（导数的）导数的导数来计算他们，像三次曲线一样。
-And of course, as a quartic curve  also has meaningful second and third derivatives, we can quite easily compute those by using the derivative of the derivative (of the derivative), just as for cubic curves.
-
 
 
 
