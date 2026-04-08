@@ -218,5 +218,3 @@ function getCubicRoots(pa, pb, pc, pd) {
 对于三次曲线，这说明一阶导数（红）和二阶导数（紫）：
 
 <graphics-element title="三次贝塞尔曲线的极值" width="825" src="./extremities.js" data-type="cubic"></graphics-element>
-<graphics-element title="三次贝塞尔曲线的极值" width="825" src="./extremities.js" data-type="cubic"></graphics-element>
-
